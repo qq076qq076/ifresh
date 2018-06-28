@@ -1,0 +1,27 @@
+footer nav {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4a4a4a;
+}
+footer nav .item {
+  display: inline-block;
+  flex: 1;
+  height: 100%;
+  color: #eeeeee;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1px;
+}
+footer nav .item p {
+  margin: 0;
+}
+footer nav .item img {
+  height: 24px;
+  width: 24px;
+}
