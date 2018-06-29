@@ -1,13 +1,150 @@
 body {
   margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
+  color: #222;
   font-family: "PingFang-TC", "蘋方", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+}
+a,
+p,
+h1,
+h2,
+h3,
+h4 {
+  text-decoration: none;
+  margin: 0;
 }
 #index {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 .main {
   flex: 1;
   overflow-y: auto;
+}
+.banner {
+  height: 236px;
+  background: #eeeeee;
+}
+.特價廣告 {
+  display: flex;
+  flex-direction: row;
+}
+.特價廣告 a {
+  height: min-content;
+}
+.特價廣告 a img {
+  width: 50vw;
+  display: inline-flex;
+}
+.category {
+  margin-top: 20px;
+}
+.category .tab {
+  display: flex;
+  flex-direction: row;
+}
+.category .tab .tab-item {
+  flex: 1;
+  height: 48px;
+  background: #eeeeee;
+  border: solid 1px #dddddd;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a4a4a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.category .tab .tab-item.current {
+  border-top: 2px solid #f6a623;
+  border-bottom: none;
+  background-color: #f8f8f8;
+}
+.category .content {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.category .product {
+  margin-top: 10px;
+}
+.category .product a {
+  display: flex;
+  flex-direction: column;
+}
+.category .product .productImg {
+  width: 100%;
+}
+.category .product .discribe {
+  display: flex;
+  flex-direction: column;
+  color: #2d2d2d;
+  background: #ffffff;
+  border: solid 1px #dfdfdf;
+  padding: 20px;
+}
+.category .product .discribe .price-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #a5a5a5;
+  font-size: 14px;
+  margin: 15px 0;
+}
+.category .product .discribe .price-area .saled,
+.category .product .discribe .price-area .original-price,
+.category .product .discribe .price-area .discount {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+}
+.category .product .discribe .price-area .saled p {
+  color: #f56b23;
+  display: inline;
+}
+.category .product .discribe .price-area .original-price {
+  border-left: 2px solid #eee;
+  text-decoration: line-through;
+}
+.category .product .discribe .price-area .discount {
+  border-left: 2px solid #eee;
+}
+.category .product .discribe .price-area .discount p {
+  font-size: 24px;
+  color: #ee3a31;
+  display: inline;
+}
+.category .product .discribe button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #fbe7b5, #f1c445);
+  box-shadow: inset 0 1px 2px 0 #ffffff;
+  border: solid 1px #e97600;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3.6px;
+  color: #1f1f1f;
+}
+.category .product .discribe button img {
+  margin-right: 7px;
+}
+.category .product .discribe button:active {
+  background-image: linear-gradient(to top, #fbe7b5, #f1c445);
+  box-shadow: inset 0 1px 2px 0 #ffffff;
 }
