@@ -154,3 +154,31 @@ h4 {
         }
     }
 }
+
+.left-menu {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    width: 337px;
+    height: 100vh;
+    overflow: auto;
+    background: #ffffff;
+    .menu {
+        list-style: none;
+        li:first {
+            text-align: center;
+            &:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: '';
+                float: left;
+                width: 9px;
+                height: 18px;
+                background-image: url(http://m.i3fresh.tw/img/arrow_back@2x.png);
+                background-size: 9px 14px;
+                background-position: 0 center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
