@@ -12,14 +12,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/headerStyle.css" />
-    <link rel="stylesheet" href="./css/footerStyle.css" />
-
 </head>
 
 <body>
     <div id="index">
-        <header-component></header-component>
+        <header>
+            <i class="menu" @click="menuOpen = true"></i>
+            <div class="logo-space">
+                <img src="./image/logo.png" />
+            </div>
+            <i class="footerint">
+                <img src="./image/footprint.png" width="24px" />
+            </i>
+        </header>
         <div class="main">
             <div class="banner">
                 倫波圖
@@ -67,17 +72,69 @@
                 </div>
             </div>
         </div>
-        <footer-component></footer-component>
+        <div class="left-menu-block" :class="{open : menuOpen}">
+            <div class="mask"></div>
+            <nav class="left-menu">
+                <div class="menu-title">
+                    <img class="close" src="http://m.i3fresh.tw/Htdocs/img/arrow_back@2x.png" @click="menuOpen = false" /> 主選單
+                </div>
+                <ul>
+                    <template v-for="menu in leftMenuList">
+                        <li class="title">
+                            {{menu.text}}
+                        </li>
+                        <li v-for="content in menu.contentList" :class="{sub: content.subMenu}" @click="openSubMenu(content)">
+                            <a :href="content.url">
+                                {{content.text}}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+            <nav class="subMenuShow" :class="{open : subMenuOpen}">
+                <div class="menu-title">
+                    <img class="close" src="http://m.i3fresh.tw/Htdocs/img/arrow_back@2x.png" @click="subMenuOpen = false" />{{subMenuData.text}}
+                </div>
+                <ul>
+                    <li v-for="menu in subMenuData.subMenu">
+                        <a :href="menu.url">
+                            {{menu.text}}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <footer>
+            <nav>
+                <a class="item">
+                    <img src="./image/footer/search.png" />
+                    <p>搜尋</p>
+                </a>
+                <a class="item">
+                    <img src="./image/footer/member.png" />
+                    <p>會員</p>
+                </a>
+                <a class="item">
+                    <img src="./image/footer/favorite.png" />
+                    <p>收藏</p>
+                </a>
+                <a class="item">
+                    <img src="./image/footer/shopcard.png" />
+                    <p>結帳</p>
+                </a>
+            </nav>
+        </footer>
     </div>
 
     <script src="./vue.js"></script>
-    <script src="./component/header.js"></script>
-    <script src="./component/footer.js"></script>
     <script>
         new Vue({
             el: '#index',
             data: {
                 currentTab: 0,
+                menuOpen: false,
+                subMenuOpen: false,
+                subMenuData: [],
                 productList: [
                     [{
                             title: 'Q彈曼波魚皮',
@@ -179,10 +236,118 @@
                         },
                     ],
                 ],
+                leftMenuList: [{
+                    text: '商品選單',
+                    contentList: [{
+                            text: '肉品館',
+                            subMenu: [{
+                                    text: '全館商品',
+                                    url: '#',
+                                },
+                                {
+                                    text: '牛肉',
+                                    url: '#',
+                                },
+                                {
+                                    text: '羊肉',
+                                    url: '#',
+                                },
+                                {
+                                    text: '豬肉',
+                                    url: '#',
+                                },
+                                {
+                                    text: '雞肉',
+                                    url: '#',
+                                },
+                            ],
+                        },
+                        {
+                            text: '海鮮館',
+                            subMenu: [{
+                                    text: '全館商品',
+                                    url: '#',
+                                },
+                                {
+                                    text: '蝦蟹類',
+                                    url: '#',
+                                },
+                                {
+                                    text: '軟貝類',
+                                    url: '#',
+                                },
+                                {
+                                    text: '魚類',
+                                    url: '#',
+                                },
+                            ]
+                        },
+                        {
+                            text: '產地直送',
+                            url: '#',
+                        },
+                        {
+                            text: '調理即食',
+                            url: '#',
+                        },
+                        {
+                            text: '健康零嘴、甜點、飲品',
+                            url: '#',
+                        },
+                        {
+                            text: '超人氣蔬果',
+                            url: '#',
+                        },
+                        {
+                            text: '養生、美容食品',
+                            url: '#',
+                        },
+                    ],
+                }, {
+                    text: '會員中心',
+                    contentList: [{
+                            text: '註冊',
+                            url: '#',
+                        },
+                        {
+                            text: '登入會員',
+                            url: '#',
+                        },
+                    ],
+                }, {
+                    text: '關於我們',
+                    contentList: [{
+                            text: '最新消息',
+                            url: '#',
+                        },
+                        {
+                            text: '購物說明',
+                            url: '#',
+                        },
+                        {
+                            text: '關於我們',
+                            url: '#',
+                        },
+                        {
+                            text: '會員服務條款',
+                            url: '#',
+                        },
+                        {
+                            text: '隱私權條款',
+                            url: '#',
+                        },
+                    ],
+                }],
             },
             methods: {
                 changeTab: function (tab) {
                     this.currentTab = tab;
+                },
+                openSubMenu: function (subMenu) {
+                    if (subMenu) {
+                        this.subMenuData = subMenu;
+                        this.subMenuOpen = true;
+                    }
                 },
             },
         });
