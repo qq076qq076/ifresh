@@ -143,12 +143,27 @@ footer nav .item img {
   background-color: #f8f8f8;
 }
 .category .content {
-  padding: 0 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .category .product {
-  margin-top: 10px;
+  margin: 10px 10px 0;
+}
+@media screen {
+  .category .product {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 769px) {
+  .category .product {
+    width: calc((100% - 40px)/ 2);
+  }
+}
+@media screen and (min-width: 769px) {
+  .category .product {
+    width: calc((100% - 60px )/ 3);
+  }
 }
 .category .product a {
   display: flex;
