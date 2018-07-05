@@ -17,62 +17,107 @@
 <body>
     <div id="index">
         <header>
-            <i class="menu" @click="menuOpen = true"></i>
-            <div class="logo-space">
-                <img src="./image/logo.png" />
-            </div>
-            <i class="footerint">
-                <img src="./image/footprint.png" width="24px" />
-            </i>
-        </header>
-        <div class="main">
-            <div class="banner">
-                倫波圖
-            </div>
-            <div class="特價廣告">
-                <a href="#">
-                    <img src="http://item.i3fresh.tw/images/cd0e2cd14d927a2634701b5f61851680.jpg" alt="今日下殺" />
-                </a>
-                <a href="#">
-                    <img src="http://item.i3fresh.tw/images/fc1e3ac45938a99dbd75e03d255b436b.jpg" alt="今日下殺" />
-                </a>
-            </div>
-            <div class="category">
-                <div class="tab">
-                    <div @click="changeTab(0)" class="tab-item" :class="{current:currentTab===0}">熱銷推薦</div>
-                    <div @click="changeTab(1)" class="tab-item" :class="{current:currentTab===1}">最新上架</div>
-                    <div @click="changeTab(2)" class="tab-item" :class="{current:currentTab===2}">限時下殺</div>
+            <div class="show-m header-m">
+                <i class="menu" @click="menuOpen = true"></i>
+                <div class="logo-space">
+                    <img src="./image/logo.png" />
                 </div>
-                <div class="content">
-                    <div class="product" v-for="product in productList[currentTab]">
+                <i class="footerint">
+                    <img src="./image/footprint.png" width="24px" />
+                </i>
+            </div>
+            <div class="show-pc header-pc container">
+                <a href="#">
+                    <img src="http://p.i3fresh.tw/images/logo.png" alt="愛上新鮮" height="88px">
+                </a>
+                <div class="info">
+                    <div class="hr">
+                        <span>24HR</span>快速到貨 | 16:00以前訂購明天到貨
+                    </div>
+                    <div>TEL: (02)2321-0311 星期一到星期五 9:00-18:00</div>
+                </div>
+                <div class="option">
+                    <div>
+                        <input type="text" class="search">
+                    </div>
+                    <div class="btn-group">
                         <a href="#">
-                            <img class="productImg" :src="product.url" :alt="product.title" />
-                            <div class="discribe">
-                                <h3>{{product.title}}</h3>
-                                <div class="price-area">
-                                    <div class="saled">
-                                        已賣
-                                        <br />
-                                        <p>{{product.saled}}</p>/{{product.unit}}
-                                    </div>
-                                    <div class="original-price">
-                                        ${{product.originalPrice}}/{{product.unit}}
-                                    </div>
-                                    <div class="discount">
-                                        $
-                                        <p>{{product.discount}}</p>/{{product.unit}}
-                                    </div>
-                                </div>
-                                <button>
-                                    <img src="./image/cart_icon.png" width="32px" /> 前往商品頁
-                                </button>
-                            </div>
+                            <img src="http://p.i3fresh.tw/images/usericon.png" alt="註冊登入" />會員註冊/登入
+                        </a>
+                        <a href="#">
+                            <img src="http://p.i3fresh.tw/images/carticon.svg" alt="結帳" />結帳
+                        </a>
+                        <a href="#">
+                            <img src="http://p.i3fresh.tw/images/likeicon.svg" alt="收藏清單" />收藏清單
                         </a>
                     </div>
                 </div>
             </div>
+        </header>
+        <div class="main container">
+            <div class="left-menu-pc show-pc">
+                <div class="title-blue">商品選單</div>
+                <div>
+                    <ul class="mune-list">
+                        <li>
+                            <a href="#">肉品館</a>
+                        </li>
+                        <li>
+                            <a href="#">肉品館</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title-green">熱門關鍵字</div>
+            </div>
+            <div class="right-content">
+                <div class="banner">
+                    倫波圖
+                </div>
+                <div class="特價廣告">
+                    <a href="#">
+                        <img src="http://item.i3fresh.tw/images/cd0e2cd14d927a2634701b5f61851680.jpg" alt="今日下殺" />
+                    </a>
+                    <a href="#">
+                        <img src="http://item.i3fresh.tw/images/fc1e3ac45938a99dbd75e03d255b436b.jpg" alt="今日下殺" />
+                    </a>
+                </div>
+                <div class="category">
+                    <div class="tab">
+                        <div @click="changeTab(0)" class="tab-item" :class="{current:currentTab===0}">熱銷推薦</div>
+                        <div @click="changeTab(1)" class="tab-item" :class="{current:currentTab===1}">最新上架</div>
+                        <div @click="changeTab(2)" class="tab-item" :class="{current:currentTab===2}">限時下殺</div>
+                    </div>
+                    <div class="content">
+                        <div class="product" v-for="product in productList[currentTab]">
+                            <a href="#">
+                                <img class="productImg" :src="product.url" :alt="product.title" />
+                                <div class="discribe">
+                                    <h3>{{product.title}}</h3>
+                                    <div class="price-area">
+                                        <div class="saled">
+                                            已賣
+                                            <br />
+                                            <p>{{product.saled}}</p>/{{product.unit}}
+                                        </div>
+                                        <div class="original-price">
+                                            ${{product.originalPrice}}/{{product.unit}}
+                                        </div>
+                                        <div class="discount">
+                                            $
+                                            <p>{{product.discount}}</p>/{{product.unit}}
+                                        </div>
+                                    </div>
+                                    <button>
+                                        <img src="./image/cart_icon.png" width="32px" /> 前往商品頁
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="left-menu-block" :class="{open : menuOpen}">
+        <div class="left-menu-block show-m" :class="{open : menuOpen}">
             <div class="mask"></div>
             <nav class="left-menu">
                 <div class="menu-title">
@@ -104,7 +149,7 @@
                 </ul>
             </nav>
         </div>
-        <footer>
+        <footer class="show-m">
             <nav>
                 <a class="item">
                     <img src="./image/footer/search.png" />

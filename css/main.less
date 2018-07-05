@@ -24,11 +24,14 @@ h4 {
 }
 
 header {
+    border-bottom: 1px solid #999999;
+}
+
+.header-m {
     height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid #999999;
     .menu {
         display: flex;
         flex-direction: row;
@@ -74,6 +77,58 @@ header {
     }
 }
 
+.header-pc {
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    padding: 10px 0;
+    .info {
+        flex: 1;
+        font-size: 14px;
+        color: #585858;
+        >div {
+            margin-top: 17px;
+        }
+        .hr {
+            font-size: 16px;
+            span {
+                margin-right: 5px;
+                color: #03a0e9;
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+    .option {
+        text-align: right;
+        .search {
+            width: 300px;
+            height: 30px;
+            border: solid 2px #e6e6e6;
+            margin-top: 15px;
+            background: url('http://p.i3fresh.tw/images/searchicon.png') no-repeat scroll transparent;
+            background-position: right center;
+            background-position-x: 300px;
+            padding-right: 20px;
+            padding-left: 10px;
+        }
+        .btn-group {
+            font-size: 16px;
+            text-align: right;
+            margin-top: 12px;
+            a {
+                color: #000000;
+                margin: 0 5px;
+                img {
+                    margin-right: 5px;
+                    height: 16px;
+                    vertical-align: baseline;
+                }
+            }
+        }
+    }
+}
+
 footer {
     nav {
         height: 50px;
@@ -107,6 +162,15 @@ footer {
 .main {
     flex: 1;
     overflow-y: auto;
+    @media screen and (min-width: 769px) {
+        display: flex;
+        flex-direction: row;
+        .right-content {
+            flex: 101;
+            max-height: ~"calc(100vh - 110px)";
+            overflow: auto;
+        }
+    }
 }
 
 .banner {
@@ -119,8 +183,9 @@ footer {
     flex-direction: row;
     a {
         height: min-content;
+        width: 100%;
         img {
-            width: 50vw;
+            width: 100%;
             display: inline-flex;
         }
     }
@@ -333,5 +398,68 @@ footer {
         &.open {
             left: 0;
         }
+    }
+}
+
+.left-menu-pc {
+    flex: 26;
+    border-radius: 3px;
+    border: 1px solid rgb(201, 202, 202);
+    height: min-content;
+    .title-blue,
+    .title-green {
+        color: #eeeeee;
+        padding-left: 13px;
+    }
+    .title-blue {
+        background: #63c1ed;
+    }
+    .title-green {
+        background: #b4d51c;
+    }
+    .mune-list {
+        list-style: none;
+        padding-left: 15px;
+        li a {
+            color: #000000;
+            font-size: 16px;
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                margin-right: 5px;
+                background-image: url(http://p.i3fresh.tw/images/hot_b.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+            &:hover{
+                color:#42bbf4;
+                &:before{
+                    background-image: url(http://p.i3fresh.tw/images/hot_color.svg);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:769px) {
+    .show-pc {
+        display: none;
+    }
+    .container {
+        width: auto;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .show-m {
+        display: none;
+    }
+    .container {
+        width: 1296px;
+        margin: 0 auto;
     }
 }

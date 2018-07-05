@@ -21,13 +21,15 @@ h4 {
   overflow: hidden;
 }
 header {
+  border-bottom: 1px solid #999999;
+}
+.header-m {
   height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid #999999;
 }
-header .menu {
+.header-m .menu {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -35,7 +37,7 @@ header .menu {
   height: 60px;
   width: 60px;
 }
-header .menu:after {
+.header-m .menu:after {
   content: "";
   background-image: url(../image/menu-icon.png);
   background-repeat: no-repeat;
@@ -45,17 +47,17 @@ header .menu:after {
   width: 24px;
   margin: auto;
 }
-header .logo-space {
+.header-m .logo-space {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex: 1;
 }
-header .logo-space img {
+.header-m .logo-space img {
   width: 136px;
 }
-header .footerint {
+.header-m .footerint {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,11 +66,62 @@ header .footerint {
   width: 60px;
   color: #128de3;
 }
-header .footerint:after {
+.header-m .footerint:after {
   content: "足跡";
   font-size: 12px;
   font-style: normal;
   margin-top: 2px;
+}
+.header-pc {
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  padding: 10px 0;
+}
+.header-pc .info {
+  flex: 1;
+  font-size: 14px;
+  color: #585858;
+}
+.header-pc .info > div {
+  margin-top: 17px;
+}
+.header-pc .info .hr {
+  font-size: 16px;
+}
+.header-pc .info .hr span {
+  margin-right: 5px;
+  color: #03a0e9;
+  font-size: 20px;
+  font-weight: 700;
+}
+.header-pc .option {
+  text-align: right;
+}
+.header-pc .option .search {
+  width: 300px;
+  height: 30px;
+  border: solid 2px #e6e6e6;
+  margin-top: 15px;
+  background: url('http://p.i3fresh.tw/images/searchicon.png') no-repeat scroll transparent;
+  background-position: right center;
+  background-position-x: 300px;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+.header-pc .option .btn-group {
+  font-size: 16px;
+  text-align: right;
+  margin-top: 12px;
+}
+.header-pc .option .btn-group a {
+  color: #000000;
+  margin: 0 5px;
+}
+.header-pc .option .btn-group a img {
+  margin-right: 5px;
+  height: 16px;
+  vertical-align: baseline;
 }
 footer nav {
   height: 50px;
@@ -101,6 +154,17 @@ footer nav .item img {
   flex: 1;
   overflow-y: auto;
 }
+@media screen and (min-width: 769px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+  }
+  .main .right-content {
+    flex: 101;
+    max-height: calc(100vh - 110px);
+    overflow: auto;
+  }
+}
 .banner {
   height: 236px;
   background: #eeeeee;
@@ -111,9 +175,10 @@ footer nav .item img {
 }
 .特價廣告 a {
   height: min-content;
+  width: 100%;
 }
 .特價廣告 a img {
-  width: 50vw;
+  width: 100%;
   display: inline-flex;
 }
 .category {
@@ -332,4 +397,64 @@ footer nav .item img {
 }
 .left-menu-block .subMenuShow.open {
   left: 0;
+}
+.left-menu-pc {
+  flex: 26;
+  border-radius: 3px;
+  border: 1px solid #c9caca;
+  height: min-content;
+}
+.left-menu-pc .title-blue,
+.left-menu-pc .title-green {
+  color: #eeeeee;
+  padding-left: 13px;
+}
+.left-menu-pc .title-blue {
+  background: #63c1ed;
+}
+.left-menu-pc .title-green {
+  background: #b4d51c;
+}
+.left-menu-pc .mune-list {
+  list-style: none;
+  padding-left: 15px;
+}
+.left-menu-pc .mune-list li a {
+  color: #000000;
+  font-size: 16px;
+}
+.left-menu-pc .mune-list li a::before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  background-image: url(http://p.i3fresh.tw/images/hot_b.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.left-menu-pc .mune-list li a:hover {
+  color: #42bbf4;
+}
+.left-menu-pc .mune-list li a:hover:before {
+  background-image: url(http://p.i3fresh.tw/images/hot_color.svg);
+}
+@media screen and (max-width: 769px) {
+  .show-pc {
+    display: none;
+  }
+  .container {
+    width: auto;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 769px) {
+  .show-m {
+    display: none;
+  }
+  .container {
+    width: 1296px;
+    margin: 0 auto;
+  }
 }
