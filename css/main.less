@@ -176,6 +176,12 @@ footer {
 .banner {
     height: 236px;
     background: #eeeeee;
+    @media screen and (min-width: 769px) {
+        display: inline-block;
+        width: 789px;
+        height: 458px;
+        float: left;
+    }
 }
 
 .特價廣告 {
@@ -187,6 +193,13 @@ footer {
         img {
             width: 100%;
             display: inline-flex;
+        }
+    }
+    @media screen and (min-width:769px) {
+        width: 223px;
+        flex-direction: column;
+        a {
+            height: 229px;
         }
     }
 }
@@ -410,6 +423,8 @@ footer {
     .title-green {
         color: #eeeeee;
         padding-left: 13px;
+        height: 43px;
+        line-height: 43px;
     }
     .title-blue {
         background: #63c1ed;
@@ -420,25 +435,44 @@ footer {
     .mune-list {
         list-style: none;
         padding-left: 15px;
-        li a {
-            color: #000000;
-            font-size: 16px;
-            &::before {
-                content: '';
-                display: inline-block;
-                width: 15px;
-                height: 15px;
-                margin-right: 5px;
-                background-image: url(http://p.i3fresh.tw/images/hot_b.svg);
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: 100%;
-            }
-            &:hover{
-                color:#42bbf4;
-                &:before{
-                    background-image: url(http://p.i3fresh.tw/images/hot_color.svg);
+        li {
+            margin-top:14px;
+            a {
+                color: #000000;
+                font-size: 16px;
+                display: block;
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 5px;
+                    background-image: url(http://p.i3fresh.tw/images/hot_b.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
                 }
+                &:hover {
+                    color: #42bbf4;
+                    &:before {
+                        background-image: url(http://p.i3fresh.tw/images/hot_color.svg);
+                    }
+                }
+            }
+            &.mainLi a:after {
+                content: "+";
+                float: right;
+                margin-right: 10px;
+            }
+        }
+        .subMenu {
+            padding-left: 25px;
+            display: none;
+            a::before {
+                content: none;
+            }
+            &.show {
+                display: block;
             }
         }
     }

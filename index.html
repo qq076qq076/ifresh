@@ -59,12 +59,18 @@
                 <div class="title-blue">商品選單</div>
                 <div>
                     <ul class="mune-list">
-                        <li>
-                            <a href="#">肉品館</a>
-                        </li>
-                        <li>
-                            <a href="#">肉品館</a>
-                        </li>
+                        <template v-for="(menu,index) in leftMenuList[0].contentList">
+                            <li :class="{mainLi:menu.subMenu}" @click="showSubMenu(menu,index)">
+                                <a :href="menu.url">
+                                    {{menu.text}}
+                                </a>
+                            </li>
+                            <li class="subMenu" :class="{show:showSub===index}" v-for="sub in menu.subMenu">
+                                <a :href="sub.url">
+                                    {{sub.text}}
+                                </a>
+                            </li>
+                        </template>
                     </ul>
                 </div>
                 <div class="title-green">熱門關鍵字</div>
@@ -179,6 +185,7 @@
                 currentTab: 0,
                 menuOpen: false,
                 subMenuOpen: false,
+                showSub: null,
                 subMenuData: [],
                 productList: [
                     [{
@@ -392,6 +399,11 @@
                     if (subMenu) {
                         this.subMenuData = subMenu;
                         this.subMenuOpen = true;
+                    }
+                },
+                showSubMenu: function (menu, index) {
+                    if (menu.subMenu) {
+                        this.showSub = (this.showSub === index) ? null : index;
                     }
                 },
             },
