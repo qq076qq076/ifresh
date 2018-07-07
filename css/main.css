@@ -476,6 +476,7 @@ footer.show-pc ul li:not(:last-child) {
   border: 1px solid #c9caca;
   height: min-content;
   position: sticky;
+  margin-right: 10px;
   top: 0px;
 }
 .left-menu-pc .title-blue,
