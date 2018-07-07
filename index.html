@@ -26,9 +26,9 @@
                     <img src="./image/footprint.png" width="24px" />
                 </i>
             </div>
-            <div class="show-pc header-pc container">
-                <a href="#">
-                    <img src="http://p.i3fresh.tw/images/logo.png" alt="愛上新鮮" height="88px">
+            <div class="show-pc header-pc container" :class="{normalHieght:!normalHieght}">
+                <a href="#" class="home">
+                    <img src="http://p.i3fresh.tw/images/logo.png" alt="愛上新鮮" height="100%">
                 </a>
                 <div class="info">
                     <div class="hr">
@@ -37,9 +37,7 @@
                     <div>TEL: (02)2321-0311 星期一到星期五 9:00-18:00</div>
                 </div>
                 <div class="option">
-                    <div>
-                        <input type="text" class="search">
-                    </div>
+                    <input type="text" class="search">
                     <div class="btn-group">
                         <a href="#">
                             <img src="http://p.i3fresh.tw/images/usericon.png" alt="註冊登入" />會員註冊/登入
@@ -54,7 +52,7 @@
                 </div>
             </div>
         </header>
-        <div class="main container">
+        <div class="main container" id="main" @scroll="toggleHeaderStatus">
             <div class="left-menu-pc show-pc">
                 <div class="title-blue">商品選單</div>
                 <div>
@@ -74,8 +72,13 @@
                     </ul>
                 </div>
                 <div class="title-green">熱門關鍵字</div>
+                <div class="keyword">
+                    <a v-for="keyword in keywordList" :href="keyword.url" class="keyword-list">
+                        {{keyword.text}}
+                    </a>
+                </div>
             </div>
-            <div class="right-content">
+            <div class="right-content" :class="{normalHieght:!normalHieght}">
                 <div class="banner">
                     倫波圖
                 </div>
@@ -122,6 +125,45 @@
                     </div>
                 </div>
             </div>
+            <footer class="show-pc">
+                <p>追蹤我們</p>
+                <div class="icon">
+                    <a href="#">
+                        <i class="fb"></i>
+                    </a>
+                    <a href="#">
+                        <i class="line"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ig"></i>
+                    </a>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#">最新消息</a>
+                        </li>
+                        <li>
+                            <a href="#">關於我們</a>
+                        </li>
+                        <li>
+                            <a href="#">廠商合作</a>
+                        </li>
+                        <li>
+                            <a href="#">聯繫我們</a>
+                        </li>
+                        <li>
+                            <a href="#">購物說明</a>
+                        </li>
+                        <li>
+                            <a href="#">會員服務條款</a>
+                        </li>
+                        <li>
+                            <a href="#">隱私權條款</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
         <div class="left-menu-block show-m" :class="{open : menuOpen}">
             <div class="mask"></div>
@@ -155,6 +197,23 @@
                 </ul>
             </nav>
         </div>
+        <div class="show-pc fixed-box">
+            <div class="history">
+                <div class="history-block" :class="{open:historyOpen}">
+                    <div class="top"></div>
+                    <a href="#">
+                        <img src="http://item.i3fresh.tw/images/04d6f60c50dcd305a59f3ce6e845930f_ss.jpg" />
+                    </a>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+            <div class="blue" @click="historyOpen = !historyOpen">
+                <img src="http://p.i3fresh.tw/images/historyicon.svg" width="40px" /> 已瀏覽
+            </div>
+            <div class="blue" @click="backToTop(300)">
+                <img src="http://p.i3fresh.tw/images/topicon.svg" />
+            </div>
+        </div>
         <footer class="show-m">
             <nav>
                 <a class="item">
@@ -185,6 +244,8 @@
                 currentTab: 0,
                 menuOpen: false,
                 subMenuOpen: false,
+                normalHieght: true,
+                historyOpen: false,
                 showSub: null,
                 subMenuData: [],
                 productList: [
@@ -390,6 +451,83 @@
                         },
                     ],
                 }],
+                keywordList: [{
+                        text: '熱銷推薦',
+                        url: '#',
+                    },
+                    {
+                        text: '熱銷排行榜',
+                        url: '#',
+                    },
+                    {
+                        text: '最新上架',
+                        url: '#',
+                    },
+                    {
+                        text: 'OL最愛零食',
+                        url: '#',
+                    },
+                    {
+                        text: '團購超夯',
+                        url: '#',
+                    },
+                    {
+                        text: '產地直送',
+                        url: '#',
+                    },
+                    {
+                        text: '進口零嘴',
+                        url: '#',
+                    },
+                    {
+                        text: '開運年菜',
+                        url: '#',
+                    },
+                    {
+                        text: '期間限定',
+                        url: '#',
+                    },
+                    {
+                        text: '煮火鍋',
+                        url: '#',
+                    },
+                    {
+                        text: '送禮必敗',
+                        url: '#',
+                    },
+                    {
+                        text: '健康養生',
+                        url: '#',
+                    },
+                    {
+                        text: '人氣必買',
+                        url: '#',
+                    },
+                    {
+                        text: '超人氣水果',
+                        url: '#',
+                    },
+                    {
+                        text: '限時下殺',
+                        url: '#',
+                    },
+                    {
+                        text: '新鮮鯖魚',
+                        url: '#',
+                    },
+                    {
+                        text: '健康飲品',
+                        url: '#',
+                    },
+                    {
+                        text: '熱銷零嘴',
+                        url: '#',
+                    },
+                    {
+                        text: '熱銷生鮮',
+                        url: '#',
+                    },
+                ],
             },
             methods: {
                 changeTab: function (tab) {
@@ -405,6 +543,22 @@
                     if (menu.subMenu) {
                         this.showSub = (this.showSub === index) ? null : index;
                     }
+                },
+                backToTop: function (duration) {
+                    var element = document.getElementById('main');
+                    if (duration <= 0) return;
+                    var difference = 0 - element.scrollTop;
+                    var perTick = difference / duration * 10;
+                    var vm = this;
+
+                    setTimeout(function () {
+                        element.scrollTop = element.scrollTop + perTick;
+                        if (element.scrollTop == 0) return;
+                        vm.backToTop(duration - 10);
+                    }, 10);
+                },
+                toggleHeaderStatus: function (e) {
+                    this.normalHieght = e.target.scrollTop === 0;
                 },
             },
         });

@@ -82,6 +82,20 @@ header {
     flex-direction: row;
     height: 90px;
     padding: 10px 0;
+    transition: 0.3s;
+    &.normalHieght {
+        height: 50px;
+        .info {
+            display: none;
+        }
+        .option {
+            flex: 2;
+            text-align: right;
+            .btn-group {
+                display: inline-block;
+            }
+        }
+    }
     .info {
         flex: 1;
         font-size: 14px;
@@ -100,8 +114,8 @@ header {
         }
     }
     .option {
-        text-align: right;
         .search {
+            text-align: right;
             width: 300px;
             height: 30px;
             border: solid 2px #e6e6e6;
@@ -157,6 +171,47 @@ footer {
             }
         }
     }
+    &.show-pc {
+        width: 100%;
+        text-align: center;
+        .icon {
+            margin: 20px 0;
+            a {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+            }
+            i {
+                float: left;
+                background-image: url(http://p.i3fresh.tw/images/icon_list.png);
+                width: 34px;
+                height: 34px;
+            }
+            .fb {
+                background-position: 0px 0px;
+            }
+            .line {
+                background-position: 80px 68px;
+            }
+            .ig {
+                background-position: 34px 34px;
+            }
+        }
+        ul {
+            border-top: 1px solid #aacd05;
+            padding-top: 20px;
+            list-style: none;
+            li {
+                display: inline-block;
+                color: #000;
+                font-size: 12px;
+                padding: 0 8px;
+                &:not(:last-child) {
+                    border-right: 1px solid #4a4a4a;
+                }
+            }
+        }
+    }
 }
 
 .main {
@@ -165,10 +220,12 @@ footer {
     @media screen and (min-width: 769px) {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        &::-webkit-scrollbar {
+            display: none;
+        }
         .right-content {
             flex: 101;
-            max-height: ~"calc(100vh - 110px)";
-            overflow: auto;
         }
     }
 }
@@ -419,6 +476,8 @@ footer {
     border-radius: 3px;
     border: 1px solid rgb(201, 202, 202);
     height: min-content;
+    position: sticky;
+    top: 0px;
     .title-blue,
     .title-green {
         color: #eeeeee;
@@ -436,7 +495,8 @@ footer {
         list-style: none;
         padding-left: 15px;
         li {
-            margin-top:14px;
+            cursor: pointer;
+            margin-top: 14px;
             a {
                 color: #000000;
                 font-size: 16px;
@@ -474,6 +534,76 @@ footer {
             &.show {
                 display: block;
             }
+        }
+    }
+    .keyword {
+        padding: 14px;
+        .keyword-list {
+            display: inline-block;
+            border: 1px solid #e8e8e8;
+            color: #000;
+            padding: 4px;
+            font-size: 16px;
+            margin: 0 4px 7px 0;
+            &:hover {
+                border: 1px solid #42bcf4;
+                color: #42bcf4;
+            }
+        }
+    }
+}
+
+.fixed-box {
+    width: 49px;
+    float: right;
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    z-index: 20;
+    text-align: center;
+    .blue {
+        z-index: 20;
+        position: relative;
+        margin-top: 5px;
+        padding: 10px 0;
+        font-size: 14px;
+        color: #FFF;
+        height: min-content;
+        background-color: #00a0e9;
+        border-radius: 3px;
+    }
+    .history {
+        overflow: hidden;
+        .history-block {
+            position: relative;
+            top: 65px;
+            transition: 0.3s;
+            &.open {
+                top: 0;
+            }
+        }
+        img {
+            width: 50px;
+        }
+        .top,
+        .bottom {
+            background: #00a0e9;
+            display: block;
+            text-align: center;
+            height: 14px;
+            line-height: 7px;
+            &::before {
+                content: '';
+                display: inline-block;
+                border-style: solid;
+                border-width: 5px;
+            }
+        }
+        .top::before {
+            border-color: transparent transparent #eee transparent;
+        }
+        .bottom::before {
+            border-color: #eee transparent transparent transparent;
         }
     }
 }
