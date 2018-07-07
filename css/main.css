@@ -529,13 +529,17 @@ footer.show-pc ul li:not(:last-child) {
 }
 .left-menu-pc .mune-list .subMenu {
   padding-left: 25px;
-  display: none;
+  height: 0;
+  opacity: 0;
+  transition: 0.3s;
+  margin: 0;
+}
+.left-menu-pc .mune-list .subMenu.show {
+  opacity: 1;
+  height: auto;
 }
 .left-menu-pc .mune-list .subMenu a::before {
   content: none;
-}
-.left-menu-pc .mune-list .subMenu.show {
-  display: block;
 }
 .left-menu-pc .keyword {
   padding: 14px;

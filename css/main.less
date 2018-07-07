@@ -528,12 +528,16 @@ footer {
         }
         .subMenu {
             padding-left: 25px;
-            display: none;
+            height: 0;
+            opacity: 0;
+            transition: 0.3s;
+            margin: 0;
+            &.show {
+                opacity: 1;
+                height: auto;
+            }
             a::before {
                 content: none;
-            }
-            &.show {
-                display: block;
             }
         }
     }
